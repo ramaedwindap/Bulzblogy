@@ -5,7 +5,7 @@ import DropdownMenu from "@/Components/DropdownMenu";
 import ResponsiveNavigation from "@/Layouts/ResponsiveNavigation";
 
 export default function Navbar() {
-    const { auth } = usePage().props;
+    const { auth, categories_global } = usePage().props;
     return (
         <>
             <ResponsiveNavigation />
@@ -27,9 +27,20 @@ export default function Navbar() {
                                 >
                                     Home
                                 </NavLink>
-                                <NavLink href={"#"}>Blog</NavLink>
-                                <NavLink href={"#"}>Tutorials</NavLink>
-                                <NavLink href={"#"}>Packages</NavLink>
+                                {categories_global.map((category) => (
+                                    <NavLink
+                                        active={route().current(
+                                            "categories.show",
+                                            category.slug
+                                        )}
+                                        href={route(
+                                            "categories.show",
+                                            category.slug
+                                        )}
+                                    >
+                                        {category.name}
+                                    </NavLink>
+                                ))}
                             </div>
                             <div className="flex items-center">
                                 {auth.user ? (
