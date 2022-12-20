@@ -20,7 +20,7 @@ export default function Login({ status, canResetPassword }) {
         };
     }, []);
 
-    const onHandleChange = (event) => {
+    const onChange = (event) => {
         setData(
             event.target.name,
             event.target.type === "checkbox"
@@ -57,7 +57,7 @@ export default function Login({ status, canResetPassword }) {
                         className="mt-1 block w-full"
                         autoComplete="username"
                         isFocused={true}
-                        handleChange={onHandleChange}
+                        onChange={onChange}
                     />
 
                     <InputError message={errors.email} className="mt-2" />
@@ -73,23 +73,18 @@ export default function Login({ status, canResetPassword }) {
                         value={data.password}
                         className="mt-1 block w-full"
                         autoComplete="current-password"
-                        handleChange={onHandleChange}
+                        onChange={onChange}
                     />
 
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
                 <div className="block mt-4">
-                    <label className="flex items-center">
-                        <Checkbox
-                            name="remember"
-                            value={data.remember}
-                            handleChange={onHandleChange}
-                        />
-                        <span className="ml-2 text-sm text-gray-600">
-                            Remember me
-                        </span>
-                    </label>
+                    <Checkbox
+                        name="remember"
+                        value={data.remember}
+                        onChange={onChange}
+                    />
                 </div>
 
                 <div className="flex items-center justify-end mt-4">

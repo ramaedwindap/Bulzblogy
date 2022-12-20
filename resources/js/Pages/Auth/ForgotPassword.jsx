@@ -9,7 +9,7 @@ export default function ForgotPassword({ status }) {
         email: "",
     });
 
-    const onHandleChange = (event) => {
+    const onChange = (event) => {
         setData(event.target.name, event.target.value);
     };
 
@@ -43,7 +43,7 @@ export default function ForgotPassword({ status }) {
                     value={data.email}
                     className="mt-1 block w-full"
                     isFocused={true}
-                    handleChange={onHandleChange}
+                    onChange={onChange}
                 />
 
                 <InputError message={errors.email} className="mt-2" />

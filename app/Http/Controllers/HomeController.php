@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class HomeController extends Controller
 {
@@ -15,6 +14,6 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Inertia('Home');
+        return inertia('Home');
     }
 }

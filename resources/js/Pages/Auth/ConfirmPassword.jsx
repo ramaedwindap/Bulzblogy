@@ -17,7 +17,7 @@ export default function ConfirmPassword() {
         };
     }, []);
 
-    const onHandleChange = (event) => {
+    const onChange = (event) => {
         setData(event.target.name, event.target.value);
     };
 
@@ -47,7 +47,7 @@ export default function ConfirmPassword() {
                         value={data.password}
                         className="mt-1 block w-full"
                         isFocused={true}
-                        handleChange={onHandleChange}
+                        onChange={onChange}
                     />
 
                     <InputError message={errors.password} className="mt-2" />

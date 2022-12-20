@@ -20,7 +20,7 @@ export default function Register() {
         };
     }, []);
 
-    const onHandleChange = (event) => {
+    const onChange = (event) => {
         setData(
             event.target.name,
             event.target.type === "checkbox"
@@ -50,7 +50,7 @@ export default function Register() {
                         className="mt-1 block w-full"
                         autoComplete="name"
                         isFocused={true}
-                        handleChange={onHandleChange}
+                        onChange={onChange}
                         required
                     />
 
@@ -67,7 +67,7 @@ export default function Register() {
                         value={data.email}
                         className="mt-1 block w-full"
                         autoComplete="username"
-                        handleChange={onHandleChange}
+                        onChange={onChange}
                         required
                     />
 
@@ -84,7 +84,7 @@ export default function Register() {
                         value={data.password}
                         className="mt-1 block w-full"
                         autoComplete="new-password"
-                        handleChange={onHandleChange}
+                        onChange={onChange}
                         required
                     />
 
@@ -103,7 +103,7 @@ export default function Register() {
                         name="password_confirmation"
                         value={data.password_confirmation}
                         className="mt-1 block w-full"
-                        handleChange={onHandleChange}
+                        onChange={onChange}
                         required
                     />
 
