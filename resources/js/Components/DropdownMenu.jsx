@@ -73,5 +73,12 @@ function Link({ isActive = false, children, ...props }) {
     );
 }
 
+function Divider() {
+    return (
+        <div className="h-px w-full ml-2 my-2 block bg-gradient-to-r from-gray-700 via-transparent to-transparent" />
+    );
+}
+
 DropdownMenu.Link = Link;
+DropdownMenu.Divider = Divider;
 export default DropdownMenu;
