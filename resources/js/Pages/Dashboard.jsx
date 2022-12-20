@@ -7,6 +7,7 @@ export default function Dashboard(props) {
     return (
         <>
             <Head title="Dashboard" />
+
             <Container>Dashboard</Container>
         </>
     );
