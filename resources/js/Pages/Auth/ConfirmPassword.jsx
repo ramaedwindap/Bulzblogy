@@ -3,7 +3,7 @@ import GuestLayout from "@/Layouts/GuestLayout";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
-import TextInput from "@/Components/TextInput";
+import Input from "@/Components/Input";
 import { Head, useForm } from "@inertiajs/inertia-react";
 
 export default function ConfirmPassword() {
@@ -40,7 +40,7 @@ export default function ConfirmPassword() {
                 <div className="mt-4">
                     <InputLabel forInput="password" value="Password" />
 
-                    <TextInput
+                    <Input
                         id="password"
                         type="password"
                         name="password"

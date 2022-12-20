@@ -1,7 +1,7 @@
 import GuestLayout from "@/Layouts/GuestLayout";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
-import TextInput from "@/Components/TextInput";
+import Input from "@/Components/Input";
 import { Head, useForm } from "@inertiajs/inertia-react";
 
 export default function ForgotPassword({ status }) {
@@ -36,7 +36,7 @@ export default function ForgotPassword({ status }) {
             )}
 
             <form onSubmit={submit}>
-                <TextInput
+                <Input
                     id="password"
                     type="email"
                     name="email"

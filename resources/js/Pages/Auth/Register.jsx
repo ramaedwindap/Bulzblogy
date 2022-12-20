@@ -3,7 +3,7 @@ import GuestLayout from "@/Layouts/GuestLayout";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
-import TextInput from "@/Components/TextInput";
+import Input from "@/Components/Input";
 import { Head, Link, useForm } from "@inertiajs/inertia-react";
 
 export default function Register() {
@@ -43,7 +43,7 @@ export default function Register() {
                 <div>
                     <InputLabel forInput="name" value="Name" />
 
-                    <TextInput
+                    <Input
                         id="name"
                         name="name"
                         value={data.name}
@@ -60,7 +60,7 @@ export default function Register() {
                 <div className="mt-4">
                     <InputLabel forInput="email" value="Email" />
 
-                    <TextInput
+                    <Input
                         id="email"
                         type="email"
                         name="email"
@@ -77,7 +77,7 @@ export default function Register() {
                 <div className="mt-4">
                     <InputLabel forInput="password" value="Password" />
 
-                    <TextInput
+                    <Input
                         id="password"
                         type="password"
                         name="password"
@@ -97,7 +97,7 @@ export default function Register() {
                         value="Confirm Password"
                     />
 
-                    <TextInput
+                    <Input
                         id="password_confirmation"
                         type="password"
                         name="password_confirmation"
