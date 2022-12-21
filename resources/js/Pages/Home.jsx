@@ -1,6 +1,6 @@
 import React from "react";
 import App from "@/Layouts/App";
-import { Head } from "@inertiajs/inertia-react";
+import { Head, Link } from "@inertiajs/inertia-react";
 import Header from "@/Components/Header";
 import Container from "@/Components/Container";
 import ArticleBlock from "@/Components/ArticleBlock";
@@ -28,14 +28,22 @@ export default function Home({ articles }) {
             </Header>
             <Container>
                 {articles.length ? (
-                    <Grid>
-                        {articles.map((article) => (
-                            <ArticleBlock
-                                article={article}
-                                key={article.slug}
-                            />
-                        ))}
-                    </Grid>
+                    <>
+                        <Grid>
+                            {articles.map((article) => (
+                                <ArticleBlock
+                                    article={article}
+                                    key={article.slug}
+                                />
+                            ))}
+                        </Grid>
+                        <Link
+                            className="text-blue-600 block mt-10"
+                            href={route("articles.index")}
+                        >
+                            Show more articles
+                        </Link>
+                    </>
                 ) : (
                     <p>No articles</p>
                 )}

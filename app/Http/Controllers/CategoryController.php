@@ -15,7 +15,7 @@ class CategoryController extends Controller
             ->select('title', 'slug', 'user_id', 'teaser', 'created_at', 'id')
             ->with(['tags' => fn ($tag) => $tag->select('name', 'slug')])
             ->latest()
-            ->fastPaginate();
+            ->fastPaginate(10);
         
         return inertia('Categories/Show', [
             'category' => $category,

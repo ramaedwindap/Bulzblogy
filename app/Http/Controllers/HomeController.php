@@ -19,7 +19,7 @@ class HomeController extends Controller
         $articles = Article::query()
             ->select('title', 'slug', 'user_id', 'teaser', 'created_at', 'id')
             ->with(['tags' => fn ($tag) => $tag->select('name', 'slug')])
-            ->limit(9)
+            ->limit(5)
             ->get();
             
         return inertia('Home', [
