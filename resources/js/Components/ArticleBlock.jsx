@@ -6,26 +6,20 @@ export default function ArticleBlock({ article }) {
         <div className="border shadow-sm rounded-lg">
             <div className="px-4 py-6 h-full flex-col flex">
                 <div className="flex-1">
-                    <div className="text-xs font-medium tracking-tight space-x-1 mb-3">
-                        <Link
-                            href="#"
-                            className="text-black hover:bg-gray-200 bg-gray-100 transition duration-200 px-2 py-1 rounded-md"
-                        >
-                            Laravel
-                        </Link>
-                        <Link
-                            href="#"
-                            className="text-black hover:bg-gray-200 bg-gray-100 transition duration-200 px-2 py-1 rounded-md"
-                        >
-                            Tailwind CSS
-                        </Link>
-                        <Link
-                            href="#"
-                            className="text-black hover:bg-gray-200 bg-gray-100 transition duration-200 px-2 py-1 rounded-md"
-                        >
-                            PHP
-                        </Link>
-                    </div>
+                    {article.tags.length ? (
+                        <div className="text-xs font-medium tracking-tight space-x-1 mb-3">
+                            {article.tags.map((tag) => (
+                                <Link
+                                    key={tag.slug}
+                                    href="#"
+                                    className="text-black hover:bg-gray-200 bg-gray-100 transition duration-200 px-2 py-1 rounded-md"
+                                >
+                                    {tag.name}
+                                </Link>
+                            ))}
+                        </div>
+                    ) : null}
+
                     <Link href="#">
                         <h1 className="text-gray-800 md:line-clamp-2 font-semibold tracking-tight">
                             {article.title}
