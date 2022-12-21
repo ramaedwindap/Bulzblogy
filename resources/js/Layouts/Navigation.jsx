@@ -14,9 +14,9 @@ export default function Navbar() {
                     <div className="flex items-center justify-between">
                         <Link
                             href={route("home")}
-                            className="mr-3 text-lg font-semibold capitalize text-white"
+                            className="mr-3 text-lg font-bold capitalize text-white"
                         >
-                            Inertia
+                            Bulzblogy
                         </Link>
 
                         <div className="flex flex-1 items-center justify-between">
