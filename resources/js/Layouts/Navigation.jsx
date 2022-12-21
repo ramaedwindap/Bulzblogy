@@ -29,6 +29,7 @@ export default function Navbar() {
                                 </NavLink>
                                 {categories_global.map((category) => (
                                     <NavLink
+                                        key={category.slug}
                                         active={route().current(
                                             "categories.show",
                                             category.slug
