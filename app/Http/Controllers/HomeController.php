@@ -21,8 +21,9 @@ class HomeController extends Controller
             ->with(['tags' => fn ($tag) => $tag->select('name', 'slug')])
             ->limit(9)
             ->get();
+            
         return inertia('Home', [
-            'articles' => ArticleItemResource::collection( $articles),
+            'articles' => ArticleItemResource::collection($articles),
         ]);
     }
 }
