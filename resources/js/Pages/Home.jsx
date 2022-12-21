@@ -2,8 +2,11 @@ import React from "react";
 import App from "@/Layouts/App";
 import { Head } from "@inertiajs/inertia-react";
 import Header from "@/Components/Header";
+import Container from "@/Components/Container";
+import ArticleBlock from "@/Components/ArticleBlock";
+import Grid from "@/Components/Grid";
 
-export default function Home() {
+export default function Home({ articles }) {
     return (
         <div>
             <Head title="What's happening..." />
@@ -23,6 +26,20 @@ export default function Home() {
                     legal challenge moves forward.
                 </Header.Content>
             </Header>
+            <Container>
+                {articles.length ? (
+                    <Grid>
+                        {articles.map((article) => (
+                            <ArticleBlock
+                                article={article}
+                                key={article.slug}
+                            />
+                        ))}
+                    </Grid>
+                ) : (
+                    <p>No articles</p>
+                )}
+            </Container>
         </div>
     );
 }

@@ -20,7 +20,9 @@ class HomeController extends Controller
             ->select('title', 'slug', 'user_id', 'teaser', 'created_at')
             ->limit(5)
             ->get();
-        return ArticleItemResource::collection( $articles);
-        return inertia('Home');
+    
+        return inertia('Home', [
+            'articles' => ArticleItemResource::collection( $articles),
+        ]);
     }
 }
