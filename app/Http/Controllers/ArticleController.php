@@ -6,9 +6,23 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Http\Resources\ArticleItemResource;
 use App\Http\Resources\ArticleSingleResource;
+use App\Models\Category;
+use App\Models\Tag;
 
 class ArticleController extends Controller
 {
+    public $tags;
+    public $categories;
+    
+    
+    public function __construct()
+    {
+        $this->tags = TAG::select('id', 'name')->get();
+        $this->categories = Category::select('id', 'name')->get();
+
+        //Membuat pengecualian user pada halaman index dan show tanpa harus login
+        $this->middleware('auth')->except('show', 'index');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +48,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Articles/Create', [
+            'tags' => $this->tags,
+            'categories' => $this->categories,
+        ]);
     }
 
     /**

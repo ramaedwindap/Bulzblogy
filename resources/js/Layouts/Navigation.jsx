@@ -59,7 +59,9 @@ export default function Navbar() {
                                                 Settings
                                             </DropdownMenu.Link>
                                             <DropdownMenu.Divider />
-                                            <DropdownMenu.Link href={"#"}>
+                                            <DropdownMenu.Link
+                                                href={route("articles.create")}
+                                            >
                                                 New article
                                             </DropdownMenu.Link>
                                             <DropdownMenu.Link href={"#"}>
