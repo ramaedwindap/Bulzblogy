@@ -11,6 +11,7 @@ import Textarea from "@/Components/Textarea";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Select from "@/Components/Select";
 import MultipleSelect from "@/Components/MultipleSelect";
+import { Inertia } from "@inertiajs/inertia";
 
 export default function Create({ tags, categories }) {
     const { data, setData, post, errors } = useForm({
@@ -27,8 +28,13 @@ export default function Create({ tags, categories }) {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        Inertia.post(route("articles.store"), {
+            ...data,
+            category_id: data.category_id.id,
+            tags: data.tags.map((t) => t.id),
+        });
         //Menampilkan data (testing)
-        console.log(data);
+        // console.log(data);
     };
 
     return (
