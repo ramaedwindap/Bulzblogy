@@ -62,6 +62,16 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'picture' => ['nullable', 'mimes:png,jpg,jpeg', 'image'],
+            'title' => ['required', 'string', 'min:3'],
+            'teaser' => ['required', 'string', 'min:3'],
+            'body' => ['required', 'string', 'min:3'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'tags' => ['required', 'array'],
+        ]);
+
         $picture = $request->file('picture');
         $article = $request->user()->articles()->create([
             'title' => $title = $request->title,

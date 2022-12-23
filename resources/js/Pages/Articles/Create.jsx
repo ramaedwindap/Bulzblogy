@@ -12,9 +12,10 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import Select from "@/Components/Select";
 import MultipleSelect from "@/Components/MultipleSelect";
 import { Inertia } from "@inertiajs/inertia";
+import Error from "@/Components/Error";
 
-export default function Create({ tags, categories }) {
-    const { data, setData, post, errors } = useForm({
+export default function Create({ tags, categories, errors }) {
+    const { data, setData } = useForm({
         title: "",
         teaser: "",
         category_id: "",
@@ -57,6 +58,9 @@ export default function Create({ tags, categories }) {
                                 setData("picture", e.target.files[0])
                             }
                         />
+                        {errors.picture ? (
+                            <Error value={errors.picture} />
+                        ) : null}
                     </div>
 
                     <div className="grid grid-cols-12 gap-6 mb-6">
@@ -70,6 +74,9 @@ export default function Create({ tags, categories }) {
                                     data={categories}
                                     onChange={(e) => setData("category_id", e)}
                                 />
+                                {errors.category_id ? (
+                                    <Error value={errors.category_id} />
+                                ) : null}
                             </div>
                         </div>
 
@@ -81,6 +88,9 @@ export default function Create({ tags, categories }) {
                                     data={tags}
                                     onChange={(e) => setData("tags", e)}
                                 />
+                                {errors.tags ? (
+                                    <Error value={errors.tags} />
+                                ) : null}
                             </div>
                         </div>
                     </div>
@@ -93,6 +103,7 @@ export default function Create({ tags, categories }) {
                             onChange={onChange}
                             value={data.title}
                         />
+                        {errors.title ? <Error value={errors.title} /> : null}
                     </div>
 
                     <div className="mb-6">
@@ -103,6 +114,7 @@ export default function Create({ tags, categories }) {
                             onChange={onChange}
                             value={data.teaser}
                         />
+                        {errors.teaser ? <Error value={errors.teaser} /> : null}
                     </div>
 
                     <div className="mb-6">
@@ -112,6 +124,7 @@ export default function Create({ tags, categories }) {
                             onChange={onChange}
                             value={data.body}
                         />
+                        {errors.body ? <Error value={errors.body} /> : null}
                     </div>
                     <PrimaryButton>Create</PrimaryButton>
                 </form>
