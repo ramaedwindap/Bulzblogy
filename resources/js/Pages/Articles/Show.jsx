@@ -39,6 +39,13 @@ export default function Show({ article }) {
             <Container>
                 <div className="max-w-full grid grid-cols-12 gap-16">
                     <div className="col-span-9">
+                        {article.picture ? (
+                            <img
+                                className="rounded mb-6 w-full"
+                                src={article.picture}
+                                alt=""
+                            />
+                        ) : null}
                         <Markdown>{article.body}</Markdown>
                     </div>
                     <div className="col-span-3">Lorem testing aje</div>

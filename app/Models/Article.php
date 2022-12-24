@@ -26,6 +26,7 @@ class Article extends Model
         return $this->belongsTo(Category::class);
     }
 
+    //menggunakan inisialisasi 'author'
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id')->select('id', 'name');
