@@ -6,7 +6,9 @@ import Container from "@/Components/Container";
 import Markdown from "@/Components/Markdown";
 import TagSquare from "@/Components/TagSquare";
 
-export default function Show({ article }) {
+export default function Show(props) {
+    console.log(props);
+    const { data: article, related: articles } = props.article;
     return (
         <div>
             <Head title={article.title} />
@@ -38,7 +40,7 @@ export default function Show({ article }) {
             </Header>
             <Container>
                 <div className="max-w-full grid grid-cols-12 gap-16">
-                    <div className="col-span-9">
+                    <div className="col-span-8">
                         {article.picture ? (
                             <img
                                 className="rounded mb-6 w-full"
@@ -47,6 +49,27 @@ export default function Show({ article }) {
                             />
                         ) : null}
                         <Markdown>{article.body}</Markdown>
+                    </div>
+                    <div className="col-span-4">
+                        <h4 className="text-cl font-semibold text-black border-b pb-2 mb-4">
+                            Related Articles
+                        </h4>
+                        {articles.length ? (
+                            <ul className="space-y-2">
+                                {articles.map((article) => (
+                                    <li key={article.slug}>
+                                        <Link
+                                            href={route(
+                                                "articles.show",
+                                                article.slug
+                                            )}
+                                        >
+                                            {article.title}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        ) : null}
                     </div>
                     <div className="col-span-3">Lorem testing aje</div>
                 </div>
