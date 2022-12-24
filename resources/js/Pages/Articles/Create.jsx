@@ -50,7 +50,7 @@ export default function Create({ tags, categories, errors }) {
             <Container>
                 <form onSubmit={onSubmit}>
                     <div className="mb-6">
-                        <InputLabel forInput="picture" value="Picture" />
+                        <InputLabel forInput="picture" value="picture" />
                         <InputFile
                             name="picture"
                             id="picture"

@@ -21,7 +21,7 @@ export default function Show({ category, ...props }) {
             <Container>
                 {articles.length ? (
                     <>
-                        <Grid>
+                        <Grid className="items-start">
                             {articles.map((article) => (
                                 <ArticleBlock
                                     article={article}

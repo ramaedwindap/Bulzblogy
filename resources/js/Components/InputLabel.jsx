@@ -3,7 +3,8 @@ export default function InputLabel({ forInput, value, className, children }) {
         <label
             htmlFor={forInput}
             className={
-                `block font-medium mb-2 text-sm text-gray-700 ` + className
+                `block capitalize font-medium mb-2 text-sm text-gray-700 ` +
+                className
             }
         >
             {value ? value : children}
