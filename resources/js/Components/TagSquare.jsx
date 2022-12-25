@@ -7,7 +7,6 @@ export default function TagSquare({ children, ...props }) {
             <Link
                 className="bg-gray-700 text-white px-2 py-1 text-xs font-medium hover:bg-gray-600 transition duration-200 rounded shadow border-t border-gray-600"
                 {...props}
-                href={"#"}
             >
                 {children}
             </Link>

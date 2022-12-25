@@ -30,7 +30,12 @@ export default function Show(props) {
                     {article.tags.length ? (
                         <div className="flex items-center gap-x-2 mb-1">
                             {article.tags.map((tag) => (
-                                <TagSquare key={tag.slug}>{tag.name}</TagSquare>
+                                <TagSquare
+                                    href={route("tags.show", tag.slug)}
+                                    key={tag.slug}
+                                >
+                                    {tag.name}
+                                </TagSquare>
                             ))}
                         </div>
                     ) : null}
@@ -71,7 +76,6 @@ export default function Show(props) {
                             </ul>
                         ) : null}
                     </div>
-                    <div className="col-span-3">Lorem testing aje</div>
                 </div>
             </Container>
         </div>

@@ -27,7 +27,7 @@ export default function ArticleTable(props) {
                                 <tr key={article.id}>
                                     <Table.Td>{meta.from + i}</Table.Td>
                                     <Table.Td>
-                                        <Link href={article.url}>
+                                        <Link href={article.slug}>
                                             {article.title}
                                         </Link>
                                     </Table.Td>
@@ -45,10 +45,20 @@ export default function ArticleTable(props) {
                                     </Table.Td>
                                     <td>
                                         <Table.Dropdown>
-                                            <Table.DropdownItem href={"#"}>
+                                            <Table.DropdownItem
+                                                href={route(
+                                                    "articles.show",
+                                                    article.slug
+                                                )}
+                                            >
                                                 View
                                             </Table.DropdownItem>
-                                            <Table.DropdownItem href={"#"}>
+                                            <Table.DropdownItem
+                                                href={route(
+                                                    "articles.edit",
+                                                    article.slug
+                                                )}
+                                            >
                                                 Edit
                                             </Table.DropdownItem>
                                             <Table.DropdownItem
