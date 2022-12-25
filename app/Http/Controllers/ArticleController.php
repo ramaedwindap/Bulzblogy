@@ -6,6 +6,7 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Http\Resources\ArticleItemResource;
 use App\Http\Resources\ArticleSingleResource;
+use App\Http\Resources\ArticleTableResource;
 use App\Models\Category;
 use App\Models\Tag;
 
@@ -28,6 +29,25 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function table(Request $request)
+    {
+        $articles = Article::query()
+                    ->with([
+                        'author',
+                        //membuat kondisional
+                        'tags' => fn ($query) => $query->select('name', 'slug', 'id'),
+                        'category' => fn ($query) => $query->select('name', 'slug', 'id'),
+                    ])
+                    ->whereBelongsTo($request->user(), 'author') // mempunyai relasi dengan tabel user, buat inisialiasi 'author'
+                    ->latest()
+                    ->fastPaginate(10);
+                    
+        return inertia('Articles/Table', [
+            'articles' => ArticleTableResource::collection($articles),
+        ]);
+    }
+
     public function index()
     {
         $articles = Article::query()

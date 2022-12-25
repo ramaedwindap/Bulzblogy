@@ -8,7 +8,8 @@
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Open+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Scripts -->
     @routes

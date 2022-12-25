@@ -7,7 +7,7 @@ import Markdown from "@/Components/Markdown";
 import TagSquare from "@/Components/TagSquare";
 
 export default function Show(props) {
-    console.log(props);
+    // console.log(props);
     const { data: article, related: articles } = props.article;
     return (
         <div>
