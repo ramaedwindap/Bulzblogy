@@ -20,6 +20,7 @@ class ArticleController extends Controller
     
     public function __construct()
     {
+        $this->middleware('hasRole')->only('table', 'create');
         $this->tags = TAG::select('id', 'name')->get();
         $this->categories = Category::select('id', 'name')->get();
 
