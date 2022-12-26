@@ -4,8 +4,10 @@ import App from "@/Layouts/App";
 import { Link } from "@inertiajs/inertia-react";
 import Pagination from "@/Components/Pagination";
 import Table from "@/Components/Table";
+import useSwal from "@/Hooks/useSwal";
 
 export default function ArticleTable(props) {
+    const { ask } = useSwal();
     // data rename to articles
     const { data: articles, meta, links } = props.articles;
     return (
@@ -37,11 +39,19 @@ export default function ArticleTable(props) {
                                         </Link>
                                     </Table.Td>
                                     <Table.Td>
-                                        {article.tags.map((tag, i) => (
-                                            <Link href={tag.url} key={i}>
-                                                {tag.name}
-                                            </Link>
-                                        ))}
+                                        <div className="flex gap-x-1.5">
+                                            {article.tags.map((tag, i) => (
+                                                <Link
+                                                    className={
+                                                        "bg-gray-100 hover:bg-gray-300 transition font-medium text-xs px-2 py-1 rounded-md"
+                                                    }
+                                                    href={tag.url}
+                                                    key={i}
+                                                >
+                                                    {tag.name}
+                                                </Link>
+                                            ))}
+                                        </div>
                                     </Table.Td>
                                     <td>
                                         <Table.Dropdown>
@@ -61,12 +71,22 @@ export default function ArticleTable(props) {
                                             >
                                                 Edit
                                             </Table.DropdownItem>
-                                            <Table.DropdownItem
+                                            <Table.DropdownButton
+                                                onClick={() => {
+                                                    ask({
+                                                        url: route(
+                                                            "articles.destroy",
+                                                            article.slug
+                                                        ),
+                                                        method: "delete",
+                                                        message:
+                                                            "You sure you want to delete it?",
+                                                    });
+                                                }}
                                                 className="hover:bg-rose-50 hover:text-rose-500"
-                                                href={"#"}
                                             >
                                                 Delete
-                                            </Table.DropdownItem>
+                                            </Table.DropdownButton>
                                         </Table.Dropdown>
                                     </td>
                                 </tr>
