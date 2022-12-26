@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Article::class);
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function hasRole()
+    {
+        return $this->roles()->count() >= 1 ? true :  false;
+    }
 }

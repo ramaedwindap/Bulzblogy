@@ -58,18 +58,27 @@ export default function Navbar() {
                                             <DropdownMenu.Link href={"#"}>
                                                 Settings
                                             </DropdownMenu.Link>
-                                            <DropdownMenu.Divider />
-                                            <DropdownMenu.Link
-                                                href={route("articles.create")}
-                                            >
-                                                New article
-                                            </DropdownMenu.Link>
-                                            <DropdownMenu.Link
-                                                href={route("articles.table")}
-                                            >
-                                                My articles
-                                            </DropdownMenu.Link>
-                                            <DropdownMenu.Divider />
+
+                                            {auth.user.hasRole ? (
+                                                <>
+                                                    <DropdownMenu.Divider />
+                                                    <DropdownMenu.Link
+                                                        href={route(
+                                                            "articles.create"
+                                                        )}
+                                                    >
+                                                        New article
+                                                    </DropdownMenu.Link>
+                                                    <DropdownMenu.Link
+                                                        href={route(
+                                                            "articles.table"
+                                                        )}
+                                                    >
+                                                        My articles
+                                                    </DropdownMenu.Link>
+                                                    <DropdownMenu.Divider />
+                                                </>
+                                            ) : null}
                                             <DropdownMenu.Link
                                                 href={route("logout")}
                                                 method="POST"
