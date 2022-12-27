@@ -5,7 +5,7 @@ import { InertiaLink } from "@inertiajs/inertia-react";
 
 function DropdownMenu({ toggleAnimate = true, label, children }) {
     return (
-        <Menu as="div" className="relative">
+        <Menu as="div" className="relative z-50">
             {({ open }) => (
                 <>
                     <Menu.Button
