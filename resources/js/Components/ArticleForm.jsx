@@ -10,7 +10,7 @@ import Select from "./Select";
 import Textarea from "./Textarea";
 
 export default function ArticleForm({ data, setData }) {
-    const { errors, tags, categories } = usePage().props; //karena didalam komponen sehingga menggunakan usePage()
+    const { errors, tags, categories, statuses, auth } = usePage().props; //karena didalam komponen sehingga menggunakan usePage()
     const onChange = (e) => setData(e.target.name, e.target.value);
     return (
         <>
@@ -23,6 +23,7 @@ export default function ArticleForm({ data, setData }) {
                 />
                 {errors.picture ? <Error value={errors.picture} /> : null}
             </div>
+
             <div className="grid grid-cols-12 gap-6 mb-6">
                 <div className="col-span-4">
                     <div>
@@ -52,6 +53,7 @@ export default function ArticleForm({ data, setData }) {
                     </div>
                 </div>
             </div>
+
             <div className="mb-6">
                 <InputLabel forInput="title" value="Title" />
                 <Input
@@ -62,6 +64,7 @@ export default function ArticleForm({ data, setData }) {
                 />
                 {errors.title ? <Error value={errors.title} /> : null}
             </div>
+
             <div className="mb-6">
                 <InputLabel forInput="teaser" value="Teaser" />
                 <Textarea
@@ -72,6 +75,7 @@ export default function ArticleForm({ data, setData }) {
                 />
                 {errors.teaser ? <Error value={errors.teaser} /> : null}
             </div>
+
             <div className="mb-6">
                 <Editor
                     name="body"
@@ -80,6 +84,15 @@ export default function ArticleForm({ data, setData }) {
                     value={data.body}
                 />
                 {errors.body ? <Error value={errors.body} /> : null}
+            </div>
+
+            <div className="mb-6">
+                <Select
+                    value={data.status}
+                    data={statuses}
+                    onChange={(e) => setData("status", e)}
+                />
+                {errors.status ? <Error value={errors.status} /> : null}
             </div>
         </>
     );

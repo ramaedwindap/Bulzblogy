@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ArticleStatus;
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class ArticleController extends Controller
 {
     public $tags;
     public $categories;
+    public $statuses;
     
     
     public function __construct()
@@ -23,6 +25,11 @@ class ArticleController extends Controller
         $this->middleware('hasRole')->only('table', 'create');
         $this->tags = TAG::select('id', 'name')->get();
         $this->categories = Category::select('id', 'name')->get();
+
+        $this->statuses = collect(ArticleStatus::cases())->map(fn ($status) => [
+            'id' => $status->value,
+            'name' => str($status->label())->ucfirst(),
+        ]);
 
         //Membuat pengecualian user pada halaman index dan show tanpa harus login
         $this->middleware('auth')->except('show', 'index');
@@ -58,7 +65,7 @@ class ArticleController extends Controller
             ->with(['tags' => fn ($tag) => $tag->select('name', 'slug')])
             ->latest()
             ->fastPaginate(10);
-        
+
         return inertia('Articles/Index', [
             'articles' => ArticleItemResource::collection($articles)
         ]);
@@ -74,6 +81,7 @@ class ArticleController extends Controller
         return inertia('Articles/Create', [
             'tags' => $this->tags,
             'categories' => $this->categories,
+            'statuses' => $this->statuses,
         ]);
     }
 
@@ -91,6 +99,7 @@ class ArticleController extends Controller
             'slug' => $slug = str($title)->slug(),
             'teaser' => $request->teaser,
             'category_id' => $request->category_id,
+            'status' => $request->status,
             'body' => $request->body,
             'picture' => $request->hasFile('picture') ? $picture->storeAs('images/articles', $slug .'.'. $picture->extension()) : null,
 
@@ -143,7 +152,7 @@ class ArticleController extends Controller
                 'tags' => fn ($query) => $query->select('id', 'name'),
                 'category' => fn ($query) => $query->select('id', 'name'),
             ]),
-
+            'statuses' => $this->statuses,
             'tags' => $this->tags,
             'categories' => $this->categories,
         ]);
@@ -164,8 +173,8 @@ class ArticleController extends Controller
             'teaser' => $request->teaser,
             'category_id' => $request->category_id,
             'body' => $request->body,
+            'status' => $request->status,
             'picture' => $request->hasFile('picture') ? $picture->storeAs('images/articles', $article->slug .'.'. $picture->extension()) : $article->picture,
-
         ]);
 
         $article->tags()->sync($request->tags, true);

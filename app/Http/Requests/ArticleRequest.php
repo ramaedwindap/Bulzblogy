@@ -30,6 +30,7 @@ class ArticleRequest extends FormRequest
             'body' => ['required', 'string', 'min:3'],
             'category_id' => ['required', 'exists:categories,id'],
             'tags' => ['required', 'array'],
+            'status' => ['required', 'numeric'],
         ];
     }
 }

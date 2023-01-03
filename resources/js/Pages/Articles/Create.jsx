@@ -7,7 +7,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import { Inertia } from "@inertiajs/inertia";
 import ArticleForm from "@/Components/ArticleForm";
 
-export default function Create({ tags }) {
+export default function Create({ tags, statuses }) {
     const { data, setData } = useForm({
         title: "",
         teaser: "",
@@ -15,6 +15,7 @@ export default function Create({ tags }) {
         body: "",
         picture: "",
         tags: [tags[0], tags[1]],
+        status: statuses[0],
     });
 
     const onSubmit = (e) => {
@@ -23,10 +24,9 @@ export default function Create({ tags }) {
         Inertia.post(route("articles.store"), {
             ...data,
             category_id: data.category_id.id,
+            status: data.status.id,
             tags: data.tags.map((t) => t.id),
         });
-        //Menampilkan data (testing)
-        // console.log(data);
     };
 
     return (
