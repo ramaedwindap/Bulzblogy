@@ -19,7 +19,7 @@ class ArticleItemResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'teaser' => $this->teaser,
-            'created_at' => $this->created_at->format('Y') == now()->format('Y') ? $this->created_at->format('d M') : $this->created_at('d M, Y'),
+            'created_at' => $this->created_at->format('Y') == now()->format('Y') ? $this->created_at->format('d M') : $this->created_at->format('d M, Y'),
             'picture' => $this->picture ? Storage::url($this->picture) : null,
             'tags' => $this->tags->map(fn ($tag) => [
                 'name' => $tag -> name,
