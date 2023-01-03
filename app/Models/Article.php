@@ -36,4 +36,9 @@ class Article extends Model
     {
         return $this->belongsTo(User::class, 'user_id')->select('id', 'name');
     }
+
+    public function scopeWherePublished($query)
+    {
+        return $query->where('status', ArticleStatus::PUBLISHED);
+    }
 }
