@@ -44,7 +44,7 @@ export default function Edit({ article, statuses }) {
             <Container>
                 <form onSubmit={onSubmit}>
                     <ArticleForm {...{ data, setData }} />
-                    <PrimaryButton>Create</PrimaryButton>
+                    <PrimaryButton>Update</PrimaryButton>
                 </form>
             </Container>
         </div>

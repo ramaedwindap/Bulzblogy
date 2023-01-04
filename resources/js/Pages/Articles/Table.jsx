@@ -20,6 +20,7 @@ export default function ArticleTable(props) {
                             <Table.Th>Title</Table.Th>
                             <Table.Th>Category</Table.Th>
                             <Table.Th>Tags</Table.Th>
+                            <Table.Th>Status</Table.Th>
                             <th></th>
                         </tr>
                     </Table.Thead>
@@ -51,6 +52,11 @@ export default function ArticleTable(props) {
                                                     {tag.name}
                                                 </Link>
                                             ))}
+                                        </div>
+                                    </Table.Td>
+                                    <Table.Td>
+                                        <div className="flex gap-x-1">
+                                            {article.status}
                                         </div>
                                     </Table.Td>
                                     <td>

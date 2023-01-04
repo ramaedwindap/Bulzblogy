@@ -52,7 +52,6 @@ class ArticleController extends Controller
                     ->whereBelongsTo($request->user(), 'author') // mempunyai relasi dengan tabel user, buat inisialiasi 'author'
                     ->latest()
                     ->fastPaginate(10);
-                    
         return inertia('Articles/Table', [
             'articles' => ArticleTableResource::collection($articles),
         ]);

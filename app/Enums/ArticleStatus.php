@@ -13,7 +13,6 @@ enum ArticleStatus: int
             self::UNPUBLISHED => 'unpublished',
             self::PREVIEW => 'preview',
             self::PUBLISHED => 'published',
-
         };
     }
 }

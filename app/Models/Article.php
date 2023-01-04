@@ -12,7 +12,7 @@ class Article extends Model
 
     protected $guarded = [];
 
-    protected $cast = [
+    protected $casts = [
         'status' => ArticleStatus::class,
     ];
 
