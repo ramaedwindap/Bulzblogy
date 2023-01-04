@@ -25,7 +25,7 @@ export default function ArticleForm({ data, setData }) {
             </div>
 
             <div className="grid grid-cols-12 gap-6 mb-6">
-                <div className="col-span-4">
+                <div className="md:col-span-4 col-span-6">
                     <div>
                         <InputLabel forInput={"category_id"}>
                             Category
@@ -41,7 +41,7 @@ export default function ArticleForm({ data, setData }) {
                     </div>
                 </div>
 
-                <div className="col-span-8">
+                <div className="md:col-span-8 col-span-6">
                     <div>
                         <InputLabel forInput={"tags"}>Tags</InputLabel>
                         <MultipleSelect
@@ -86,14 +86,22 @@ export default function ArticleForm({ data, setData }) {
                 {errors.body ? <Error value={errors.body} /> : null}
             </div>
 
-            <div className="mb-6">
-                <Select
-                    value={data.status}
-                    data={statuses}
-                    onChange={(e) => setData("status", e)}
-                />
-                {errors.status ? <Error value={errors.status} /> : null}
-            </div>
+            {auth.user.isAdmin ? (
+                <div className="grid grid-cols-12 gap-6 mb-6">
+                    <div className="md:col-span-2 col-span-7">
+                        <div className="mb-6">
+                            <Select
+                                value={data.status}
+                                data={statuses}
+                                onChange={(e) => setData("status", e)}
+                            />
+                            {errors.status ? (
+                                <Error value={errors.status} />
+                            ) : null}
+                        </div>
+                    </div>
+                </div>
+            ) : null}
         </>
     );
 }

@@ -5,6 +5,7 @@ import { Link } from "@inertiajs/inertia-react";
 import Pagination from "@/Components/Pagination";
 import Table from "@/Components/Table";
 import useSwal from "@/Hooks/useSwal";
+import clsx from "clsx";
 
 export default function ArticleTable(props) {
     const { ask } = useSwal();
@@ -55,9 +56,20 @@ export default function ArticleTable(props) {
                                         </div>
                                     </Table.Td>
                                     <Table.Td>
-                                        <div className="flex gap-x-1">
+                                        <span
+                                            className={clsx(
+                                                article.status == "Published" &&
+                                                    "bg-green-50 text-green-800 hover:bg-green-100 transition",
+                                                article.status ==
+                                                    "Unpublished" &&
+                                                    "bg-orange-50 text-orange-800 hover:bg-orange-100 transition",
+                                                article.status == "Preview" &&
+                                                    "bg-sky-50 text-sky-800 hover:bg-sky-100 transition",
+                                                "px-2 py-1 cursor-default rounded text-xs font-semibold"
+                                            )}
+                                        >
                                             {article.status}
-                                        </div>
+                                        </span>
                                     </Table.Td>
                                     <td>
                                         <Table.Dropdown>
