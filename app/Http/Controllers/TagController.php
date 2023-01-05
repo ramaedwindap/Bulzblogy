@@ -10,7 +10,7 @@ class TagController extends Controller
 {
     public function show (Tag $tag)
     {
-        $articles = $tag->articles()->latest()->fastPaginate();
+        $articles = $tag->articles()->wherePublished()->latest()->fastPaginate();
         return inertia('Tags/Show', [
             'tag' => $tag,
             'articles' => ArticleItemResource::collection($articles),
