@@ -22,7 +22,6 @@ class HomeController extends Controller
         // dd($request->user()->roles()->count()); //check apakah user memiliki roles (cara 2) menjadi builder
         $articles = Article::query()
             ->select('title', 'picture', 'slug', 'user_id', 'teaser', 'created_at', 'id')
-            ->with(['tags' => fn ($tag) => $tag->select('name', 'slug')])
             ->wherePublished()
             ->limit(5)
             ->get();

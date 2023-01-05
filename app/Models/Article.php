@@ -12,6 +12,8 @@ class Article extends Model
 
     protected $guarded = [];
 
+    protected $with = ['author', 'tags'];
+
     protected $casts = [
         'status' => ArticleStatus::class,
     ];
@@ -23,7 +25,7 @@ class Article extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class)->select('name', 'slug');
     }
 
     public function category()

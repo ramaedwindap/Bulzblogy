@@ -15,6 +15,7 @@ class TagController extends Controller
         return inertia('Tags/Show', [
             'tag' => $tag,
             'articles' => ArticleItemResource::collection($articles),
+            'author',
         ]);
         
     }
