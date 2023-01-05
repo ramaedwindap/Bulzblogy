@@ -5,7 +5,7 @@ import DropdownMenu from "../Components/DropdownMenu";
 export default function ResponsiveNavigation() {
     const { auth } = usePage().props;
     return (
-        <nav className="border-b border-gray-800 bg-black px-4 py-4 lg:hidden">
+        <nav className="border-b border-transparent bg-black px-4 py-4 lg:hidden">
             <div className="flex items-center justify-between">
                 <Link className="text-xl font-semibold text-white" href="/">
                     {import.meta.env.VITE_APP_NAME}

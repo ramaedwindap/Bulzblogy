@@ -6,7 +6,7 @@ function Header({ className = "", children }) {
         <div
             className={clsx(
                 className,
-                "-mt-8 mb-8 grid grid-cols-12 bg-gray-800 py-5 lg:py-32"
+                "-mt-8 mb-8 grid grid-cols-12 bg-gradient-to-r bg-black from-gray-900 via-transparent to-transparent py-5 lg:py-32"
             )}
         >
             <div className="col-span-10 col-start-2">

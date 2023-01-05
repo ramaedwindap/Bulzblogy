@@ -9,7 +9,7 @@ export default function Navbar() {
     return (
         <>
             <ResponsiveNavigation />
-            <nav className="hidden border-b border-dashed border-gray-700 bg-gray-800 py-4 shadow lg:block">
+            <nav className="hidden border-b border-transparent bg-gradient-to-r bg-gray-900 from-black via-transparent to-transparent py-4 shadow lg:block">
                 <div className="mx-auto max-w-screen-2xl px-4">
                     <div className="flex items-center justify-between">
                         <Link

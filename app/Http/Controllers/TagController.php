@@ -10,6 +10,7 @@ class TagController extends Controller
 {
     public function show (Tag $tag)
     {
+        
         $articles = $tag->articles()->wherePublished()->latest()->fastPaginate();
         return inertia('Tags/Show', [
             'tag' => $tag,
