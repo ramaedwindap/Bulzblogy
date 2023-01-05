@@ -26,7 +26,10 @@ export default function Show(props) {
                             {article.category.name}
                         </Link>{" "}
                         by{" "}
-                        <Link className="text-white" href={"#"}>
+                        <Link
+                            className="text-white"
+                            href={`/${article.author.username}`}
+                        >
                             {article.author.name}
                         </Link>
                     </div>

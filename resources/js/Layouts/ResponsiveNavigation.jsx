@@ -38,7 +38,7 @@ export default function ResponsiveNavigation() {
                             <DropdownMenu.Link href={route("dashboard")}>
                                 Dashboard
                             </DropdownMenu.Link>
-                            <DropdownMenu.Link href={"#"}>
+                            <DropdownMenu.Link href={`/${auth.user.username}`}>
                                 My profile
                             </DropdownMenu.Link>
                             <DropdownMenu.Link href={"#"}>

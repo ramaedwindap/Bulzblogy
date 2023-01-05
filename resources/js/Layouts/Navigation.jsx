@@ -52,7 +52,9 @@ export default function Navbar() {
                                             >
                                                 Dashboard
                                             </DropdownMenu.Link>
-                                            <DropdownMenu.Link href={"#"}>
+                                            <DropdownMenu.Link
+                                                href={`/${auth.user.username}`}
+                                            >
                                                 My profile
                                             </DropdownMenu.Link>
                                             <DropdownMenu.Link href={"#"}>

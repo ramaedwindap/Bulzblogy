@@ -34,7 +34,7 @@ class Article extends Model
     //menggunakan inisialisasi 'author'
     public function author()
     {
-        return $this->belongsTo(User::class, 'user_id')->select('id', 'name');
+        return $this->belongsTo(User::class, 'user_id')->select('id', 'name', 'username');
     }
 
     public function scopeWherePublished($query)

@@ -27,6 +27,7 @@ class ArticleItemResource extends JsonResource
             ]),
             'author' => [
                 'name' => $this->author->name,
+                'username' => $this->author->username,
             ],
         ];
     }

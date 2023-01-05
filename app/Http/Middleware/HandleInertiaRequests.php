@@ -39,10 +39,12 @@ class HandleInertiaRequests extends Middleware
             ->whereHas('articles')
             ->select('name', 'slug')
             ->get();
+            
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user() ? [
                     'name' => $request->user()->name,
+                    'username' => $request->user()->username,
                     'email' => $request->user()->email,
                     'hasRole' => $request->user()?->hasRole(),
                     'isAdmin' => $request->user()?->hasAnyRoles(['admin']),
