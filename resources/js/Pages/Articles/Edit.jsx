@@ -7,14 +7,16 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import { Inertia } from "@inertiajs/inertia";
 import ArticleForm from "@/Components/ArticleForm";
 
-export default function Edit({ article, statuses }) {
+export default function Edit({ article, statuses, categories, tags }) {
     const { data, setData } = useForm({
         title: article.title,
         teaser: article.teaser,
-        category_id: article.category,
+        category_id: categories.find((i) => i.id == article.category.id),
         body: article.body,
         picture: "",
-        tags: article.tags,
+        tags: tags.filter(
+            (i) => article.tags.map((t) => t.id).indexOf(i.id) != -1
+        ),
         status: statuses.find((i) => i.id == article.status),
     });
 
@@ -28,8 +30,6 @@ export default function Edit({ article, statuses }) {
             status: data.status.id,
             tags: data.tags.map((t) => t.id),
         });
-        //Menampilkan data (testing)
-        // console.log(data);
     };
 
     return (
